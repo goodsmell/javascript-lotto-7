@@ -14,6 +14,7 @@ class App {
         const money =
           await InputHandler.getMoney('구입금액을 입력해 주세요.\n');
         Validator.isNumber(money);
+        Validator.is1000WonUnts(money);
 
         return money;
       } catch (error) {
