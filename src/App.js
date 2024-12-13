@@ -1,6 +1,6 @@
 import InputHandler from './InputHandler.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
-
+import Validator from './InputValidator.js';
 //     TODO : 기능 1) 돈 입력 받고 로또 몇장인지.
 //  TODO : 기능 2) 로또 발행
 // TODO :기능 3) 당첨 번호 + 보너스 번호 입력
@@ -10,10 +10,13 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 class App {
   async run() {
     try {
-      const money = InputHandler.getMoney('구입금액을 입력해 주세요.\n');
+      const money = await InputHandler.getMoney('구입금액을 입력해 주세요.\n');
+      Validator.isNumber(money);
 
       return money;
-    } catch (error) {}
+    } catch (error) {
+      MissionUtils.Console.print(error.message);
+    }
   }
 }
 
