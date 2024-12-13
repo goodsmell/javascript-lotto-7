@@ -9,13 +9,16 @@ import Validator from './InputValidator.js';
 
 class App {
   async run() {
-    try {
-      const money = await InputHandler.getMoney('구입금액을 입력해 주세요.\n');
-      Validator.isNumber(money);
+    while (true) {
+      try {
+        const money =
+          await InputHandler.getMoney('구입금액을 입력해 주세요.\n');
+        Validator.isNumber(money);
 
-      return money;
-    } catch (error) {
-      MissionUtils.Console.print(error.message);
+        return money;
+      } catch (error) {
+        MissionUtils.Console.print(error.message);
+      }
     }
   }
 }
